@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/template/LayoutPadrao">
+
+<head>
+    <title>Cadastro de cliente</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+
+    <div class="container">
+        <div class="section">
+            <div layout:include="/fragments/MensagemGeral"></div>
+
+            <h4>Cadastro de Cliente</h4>
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card hoverable">
+                        <div class="card-content black-text">
+                            <span class="card-title">Cadastro de cliente</span>
+
+                            <div class="row">
+                                <form method="post" th:action="@{/entidades/novo}" th:object="${entidade}" class="col s12">
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <input id="nome" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('nome')} ? invalid"
+                                                   th:field="*{nome}"/>
+
+                                            <label for="nome" data-error="Nome obrigatório">Nome</label>
+                                        </div>
+                                        <div class="input-field s12 col m6">
+                                            <input id="cpfOuCnpj" type="text" class="validate"/>
+                                            <label for="cpfOuCnpj">CPF/CNPJ</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <input id="endereco" type="text" class="validate"/>
+                                            <label for="endereco">Endereço</label>
+                                        </div>
+
+                                        <div class="input-field s12 col m6">
+                                            <input id="cidade" type="text" class="validate"/>
+                                            <label for="cidade">Cidade</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <input id="bairro" type="text" class="validate"/>
+                                            <label for="bairro">Bairro</label>
+                                        </div>
+
+                                        <div class="input-field s12 col m6">
+                                            <select>
+                                                <option value="" disabled="disabled" selected="selected">Selecione o estado</option>
+                                                <option value="PE">Pernambuco</option>
+                                                <option value="BA">Bahia</option>
+                                                <option value="SP">São Paulo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <input id="telefone" type="text" class="validate"/>
+                                            <label for="telefone">Telefone</label>
+                                        </div>
+
+                                        <div class="input-field s12 col m6">
+                                            <input id="email" type="email" class="validate"/>
+                                            <label for="email" data-error="Digite um e-mail válido"
+                                                   data-success="Certo">E-mail</label>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="card-action">
+                            <a href="#">Pesquisar</a>
+                            <a href="#">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

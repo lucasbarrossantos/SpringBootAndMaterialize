@@ -1,5 +1,7 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 /**
@@ -15,6 +17,7 @@ public class Entidade {
     private Long codigo;
 
     @Column(length = 60)
+    @NotBlank(message = "Nome deve ser informado")
     private String nome;
 
     @Column(length = 20)
