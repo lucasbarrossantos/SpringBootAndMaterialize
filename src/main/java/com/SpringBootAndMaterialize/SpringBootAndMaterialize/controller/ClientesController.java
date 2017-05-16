@@ -16,9 +16,9 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/entidades")
-public class IndexController {
+public class ClientesController {
 
-    private static final String VIEWER = "CadastrarEntidade";
+    private static final String VIEWER = "entidade/CadastrarEntidade";
 
     @RequestMapping("/novo")
     public ModelAndView novo(Entidade entidade) {

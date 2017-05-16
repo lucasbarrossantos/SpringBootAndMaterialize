@@ -1,6 +1,7 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -16,13 +17,16 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
 
+    @NotNull
     @Column(name = "data_de_emissao")
     private LocalDate dataDeEmissao;
 
+    @NotNull
     @Column(name = "data_de_validade")
     private LocalDate dataDeValidade;
 

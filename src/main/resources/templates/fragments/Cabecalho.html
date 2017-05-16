@@ -7,16 +7,16 @@
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Spring Boot</a>
 
         <ul id="slide-out" class="side-nav">
-            <li><a th:href="@{/entidades/novo}">Clientes</a></li>
-            <li><a href="#!">Títulos</a></li>
+            <li><a th:href="@{/entidades}">Clientes</a></li>
+            <li><a th:href="@{/titulos}">Títulos</a></li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header">Cadastros<i class="material-icons">arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="#!">Cliente</a></li>
-                                <li><a href="#!">Título</a></li>
+                                <li><a th:href="@{/entidades/novo}">Clientes</a></li>
+                                <li><a th:href="@{/titulos/novo}">Títulos</a></li>
                             </ul>
                         </div>
                     </li>
@@ -24,12 +24,12 @@
             </li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#!">Clientes</a></li>
-            <li><a href="#!">Títulos</a></li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">Cliente</a></li>
-                <li><a href="#!">Título</a></li>
+            <li><a th:href="@{/entidades}">Clientes</a></li>
+            <li><a th:href="@{/titulos}">Títulos</a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown-cadastros">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
+            <ul id='dropdown-cadastros' class='dropdown-content'>
+                <li><a th:href="@{/entidades/novo}">Clientes</a></li>
+                <li><a th:href="@{/titulos/novo}">Títulos</a></li>
             </ul>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
