@@ -1,5 +1,7 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -17,7 +19,6 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
@@ -33,14 +34,17 @@ public class Titulo {
     @Column(name = "data_do_pagamento")
     private LocalDate dataDoPagamento;
 
+    @NotNull
     private BigDecimal valor;
 
     @Column(name = "valor_pago")
     private BigDecimal valorPago;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Situacao situacao;
 

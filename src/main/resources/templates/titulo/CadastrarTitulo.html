@@ -26,16 +26,15 @@
                                 <form method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
 
                                     <div class="row">
-                                        <!--<div class="input-field s12 col m6">
+                                        <div class="input-field s12 col m6">
                                             <select class="validate">
-                                                <option value="" disabled="disabled" selected="selected">Selecione a
-                                                    entidade
+                                                <option value="" disabled="disabled" selected="selected">Selecione a entidade
                                                 </option>
                                                 <option value="1">Lucas Barros</option>
                                                 <option value="2">Thiago Belém</option>
                                                 <option value="3">Thomas Rabelo</option>
                                             </select>
-                                        </div>-->
+                                        </div>
 
                                         <div class="input-field s12 col m6">
                                             <input id="dataDeEmissao" type="date" class="js-componente-data validate"
@@ -63,6 +62,44 @@
                                                    th:field="*{dataDoPagamento}"/>
 
                                             <label for="dataDoPagamento">Data do pagamento</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <input id="valor" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('valor')} ? invalid"
+                                                   th:field="*{valor}"/>
+
+                                            <label for="valor" data-error="Valor deve ser informado">Valor</label>
+                                        </div>
+
+                                        <div class="input-field s12 col m6">
+                                            <input id="valorPago" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('valorPago')} ? invalid"
+                                                   th:field="*{valorPago}"/>
+
+                                            <label for="valorPago">Valor pago</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field s12 col m6">
+                                            <select class="validate" th:field="*{tipo}">
+                                                <option value="" disabled="disabled" selected="selected">Selecione o tipo</option>
+                                                <option value="ENTRADA">Entrada</option>
+                                                <option value="SAIDA">Saída</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-field s12 col m6">
+                                            <select class="validate" th:field="*{situacao}">
+                                                <option value="" disabled="disabled" selected="selected">Selecione a situação</option>
+                                                <option value="COMPENSADO">Compensado</option>
+                                                <option value="PAGAMENTONAOREALIZADO">Pagamento não realizado</option>
+                                                <option value="CANCELADO">Cancelado</option>
+                                            </select>
                                         </div>
 
                                     </div>

@@ -33,7 +33,7 @@ public class TitulosController {
         }
 
         attributes.addFlashAttribute("mensagem", "Título salva com sucesso.");
-        return new ModelAndView("redirect:/entidades/novo");
+        return new ModelAndView("redirect:/titulos/novo");
     }
 
 }
