@@ -1,5 +1,6 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -17,10 +18,11 @@ public class Entidade {
     private Long codigo;
 
     @Column(length = 60)
-    @NotBlank(message = "Nome deve ser informado")
+    @NotBlank
     private String nome;
 
     @Column(length = 20)
+    @NotBlank
     private String cpfOuCnpj;
 
     @Column(length = 100)
@@ -36,9 +38,12 @@ public class Entidade {
     private String estado;
 
     @Column(length = 20)
+    @NotBlank
     private String telefone;
 
     @Column(length = 100)
+    @NotBlank
+    @Email
     private String email;
 
     public Long getCodigo() {
