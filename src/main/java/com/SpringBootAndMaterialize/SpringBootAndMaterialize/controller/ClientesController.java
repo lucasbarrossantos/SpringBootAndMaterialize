@@ -1,10 +1,12 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller;
 
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
+import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Entidades;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.EntidadesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +27,9 @@ public class ClientesController {
     @Autowired
     private EntidadesService entidadesService;
 
+    @Autowired
+    private Entidades entidades;
+
     @RequestMapping("/novo")
     public ModelAndView novo(Entidade entidade) {
         return new ModelAndView(VIEWER);
@@ -40,6 +45,13 @@ public class ClientesController {
         entidadesService.salvar(entidade);
         attributes.addFlashAttribute("mensagem", "Entidade salva com sucesso.");
         return new ModelAndView("redirect:/entidades/novo");
+    }
+
+    @GetMapping
+    public ModelAndView pesquisar(){
+        ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
+        mv.addObject("entidades", entidades.findAll());
+        return mv;
     }
 
 }
