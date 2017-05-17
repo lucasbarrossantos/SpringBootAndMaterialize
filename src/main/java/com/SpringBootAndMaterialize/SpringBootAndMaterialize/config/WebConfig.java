@@ -1,6 +1,7 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.config;
 
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller.ClientesController;
+import com.SpringBootAndMaterialize.SpringBootAndMaterialize.converter.EntidadeConverter;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.beans.BeansException;
 import org.springframework.cache.annotation.EnableCaching;
@@ -75,7 +76,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Bean
     public FormattingConversionService mvcConversionService() {
         DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
-
+        // Converter
+        conversionService.addConverter(new EntidadeConverter());
 
         NumberStyleFormatter bidDecimalFormattter = new NumberStyleFormatter("#,##0.00"); // Formato americano
         conversionService.addFormatterForFieldType(BigDecimal.class, bidDecimalFormattter);

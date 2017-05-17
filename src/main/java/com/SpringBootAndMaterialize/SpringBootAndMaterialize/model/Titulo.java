@@ -1,11 +1,13 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by lucasbarros on 13/05/17.
@@ -19,20 +21,24 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
 
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_emissao")
-    private LocalDate dataDeEmissao;
+    private Date dataDeEmissao;
 
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_validade")
-    private LocalDate dataDeValidade;
+    private Date dataDeValidade;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_do_pagamento")
-    private LocalDate dataDoPagamento;
+    private Date dataDoPagamento;
 
     @NotNull
     private BigDecimal valor;
@@ -64,27 +70,27 @@ public class Titulo {
         this.entidade = entidade;
     }
 
-    public LocalDate getDataDeEmissao() {
+    public Date getDataDeEmissao() {
         return dataDeEmissao;
     }
 
-    public void setDataDeEmissao(LocalDate dataDeEmissao) {
+    public void setDataDeEmissao(Date dataDeEmissao) {
         this.dataDeEmissao = dataDeEmissao;
     }
 
-    public LocalDate getDataDeValidade() {
+    public Date getDataDeValidade() {
         return dataDeValidade;
     }
 
-    public void setDataDeValidade(LocalDate dataDeValidade) {
+    public void setDataDeValidade(Date dataDeValidade) {
         this.dataDeValidade = dataDeValidade;
     }
 
-    public LocalDate getDataDoPagamento() {
+    public Date getDataDoPagamento() {
         return dataDoPagamento;
     }
 
-    public void setDataDoPagamento(LocalDate dataDoPagamento) {
+    public void setDataDoPagamento(Date dataDoPagamento) {
         this.dataDoPagamento = dataDoPagamento;
     }
 
