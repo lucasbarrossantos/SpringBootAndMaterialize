@@ -42,24 +42,30 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field s12 col m6">
-                                            <input id="endereco" type="text" class="validate"/>
+                                            <input id="endereco" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('endereco')} ? invalid"
+                                                   th:field="*{endereco}"/>
                                             <label for="endereco">Endereço</label>
                                         </div>
 
                                         <div class="input-field s12 col m6">
-                                            <input id="cidade" type="text" class="validate"/>
+                                            <input id="cidade" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('cidade')} ? invalid"
+                                                   th:field="*{cidade}"/>
                                             <label for="cidade">Cidade</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field s12 col m6">
-                                            <input id="bairro" type="text" class="validate"/>
+                                            <input id="bairro" type="text" class="validate"
+                                                   th:classappend="${#fields.hasErrors('bairro')} ? invalid"
+                                                   th:field="*{bairro}"/>
                                             <label for="bairro">Bairro</label>
                                         </div>
 
                                         <div class="input-field s12 col m6">
-                                            <select>
+                                            <select th:field="*{estado}">
                                                 <option value="" disabled="disabled" selected="selected">Selecione o estado</option>
                                                 <option value="PE">Pernambuco</option>
                                                 <option value="BA">Bahia</option>

@@ -1,6 +1,8 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller;
 
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
+import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.EntidadesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,9 @@ public class ClientesController {
 
     private static final String VIEWER = "entidade/CadastrarEntidade";
 
+    @Autowired
+    private EntidadesService entidadesService;
+
     @RequestMapping("/novo")
     public ModelAndView novo(Entidade entidade) {
         return new ModelAndView(VIEWER);
@@ -32,6 +37,7 @@ public class ClientesController {
             return novo(entidade);
         }
 
+        entidadesService.salvar(entidade);
         attributes.addFlashAttribute("mensagem", "Entidade salva com sucesso.");
         return new ModelAndView("redirect:/entidades/novo");
     }
