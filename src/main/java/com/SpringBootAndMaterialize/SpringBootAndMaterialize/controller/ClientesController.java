@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by lucasbarros on 05/05/17.
@@ -47,10 +48,11 @@ public class ClientesController {
         return new ModelAndView("redirect:/entidades/novo");
     }
 
-    @GetMapping
-    public ModelAndView pesquisar(){
+    @RequestMapping
+    public ModelAndView pesquisar(Entidade entidade){
         ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
-        mv.addObject("entidades", entidades.findAll());
+        List<Entidade> todasAsEntidades = entidadesService.filtrar(entidade);
+        mv.addObject("entidades", todasAsEntidades);
         return mv;
     }
 

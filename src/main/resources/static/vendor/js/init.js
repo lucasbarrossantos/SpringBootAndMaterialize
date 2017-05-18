@@ -32,3 +32,7 @@ $('.js-componente-data').pickadate({
     format: 'dd/mm/yyyy',
     formatsubmit: 'dd/mm/yyyy'
 });
+
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+});

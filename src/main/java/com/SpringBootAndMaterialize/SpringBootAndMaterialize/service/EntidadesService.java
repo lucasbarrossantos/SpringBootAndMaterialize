@@ -5,6 +5,8 @@ import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Entidade
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by lucasbarros on 16/05/17.
  */
@@ -19,4 +21,8 @@ public class EntidadesService {
         entidades.save(entidade);
     }
 
+    public List<Entidade> filtrar(Entidade entidade) {
+        String nome = entidade.getNome() == null ? "%" : entidade.getNome();
+        return entidades.findByNomeContainingIgnoreCase(nome);
+    }
 }
