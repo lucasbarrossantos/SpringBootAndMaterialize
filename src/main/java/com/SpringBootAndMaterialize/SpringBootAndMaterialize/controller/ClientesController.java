@@ -6,7 +6,7 @@ import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.EntidadesSe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,7 +36,7 @@ public class ClientesController {
         return new ModelAndView(VIEWER);
     }
 
-    @RequestMapping(value = "/novo", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ModelAndView salvar(@Valid Entidade entidade, BindingResult result, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
@@ -53,6 +53,13 @@ public class ClientesController {
         ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
         List<Entidade> todasAsEntidades = entidadesService.filtrar(entidade);
         mv.addObject("entidades", todasAsEntidades);
+        return mv;
+    }
+
+    @RequestMapping("{codigo}")
+    public ModelAndView adicao(@PathVariable("codigo") Entidade entidade){
+        ModelAndView mv = new ModelAndView(VIEWER);
+        mv.addObject(entidade);
         return mv;
     }
 
