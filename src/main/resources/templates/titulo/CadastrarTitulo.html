@@ -49,6 +49,20 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="input-field col m12 s12 l12">
+                                            <div class="input-field col s12">
+                                                <textarea id="textarea"  class="materialize-textarea validate"
+                                                          th:classappend="${#fields.hasErrors('descricao')} ? invalid"
+                                                          th:field="*{descricao}"
+                                                          data-length="255">
+                                                </textarea>
+
+                                                <label for="textarea">Descrição</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="input-field s12 col m6">
                                             <input id="dataDeValidade" type="text" class="js-componente-data validate"
                                                    th:classappend="${#fields.hasErrors('dataDeValidade')} ? invalid"

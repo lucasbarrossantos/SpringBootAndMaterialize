@@ -29,9 +29,6 @@ public class ClientesController {
     @Autowired
     private EntidadesService entidadesService;
 
-    @Autowired
-    private Entidades entidades;
-
     @RequestMapping("/novo")
     public ModelAndView novo(Entidade entidade) {
         return new ModelAndView(VIEWER);

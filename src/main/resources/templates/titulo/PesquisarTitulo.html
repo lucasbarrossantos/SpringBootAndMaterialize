@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/template/LayoutPadrao">
+
+<head>
+    <title>Pesquisa de títulos</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+
+    <div class="container">
+        <div class="section">
+            <div layout:include="/fragments/MensagemGeral"></div>
+            <div layout:include="/fragments/MensagemErro"></div>
+            <h4>Pesquisa de título</h4>
+
+            <div class="row">
+                <form class="col s12" method="get" th:action="@{/titulos}" th:object="${titulo}">
+                    <div class="row">
+                        <div class="input-field col m12 s12 l6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate" th:field="*{descricao}"/>
+                            <label for="icon_prefix">Informe a descrição</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card hoverable">
+                        <div class="card-content black-text">
+                            <span class="card-title">Títulos</span>
+
+                            <table class="responsive-table highlight">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Descricao</th>
+                                    <th>Cliente</th>
+                                    <th>Emissão</th>
+                                    <th>Validade</th>
+                                    <th>Pagamento</th>
+                                    <th>Valor</th>
+                                    <th>Valor pago</th>
+                                    <th>Tipo</th>
+                                    <th>Situação</th>
+                                    <th>Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="titulo : ${titulos}">
+                                    <td th:text="${titulo.codigo}">1</td>
+                                    <td th:text="${titulo.descricao}">Desc</td>
+                                    <td th:text="${titulo.entidade.nome}">Lucas</td>
+                                    <td th:text="${{titulo.dataDeEmissao}}">10/10/2017</td>
+                                    <td th:text="${{titulo.dataDeValidade}}">10/10/2017</td>
+                                    <td th:text="${{titulo.dataDoPagamento}}">10/10/2017</td>
+                                    <td th:text="|R$ ${{titulo.valor}}|">R$ 1,00</td>
+                                    <td th:text="|R$ ${{titulo.valorPago}}|">R$ 1,00</td>
+                                    <td th:text="${titulo.tipo.descricao}">ENTRADA</td>
+                                    <td th:text="${titulo.situacao.descricao}">COMPENSADO</td>
+                                    <td>
+                                        <a class="tooltipped" data-position="top" data-delay="50"
+                                           data-tooltip="Editar"
+                                           th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
+                                            <i class="tiny material-icons">mode_edit</i>
+                                        </a>
+                                        <a class="tooltipped js-remover-entidade-btn" data-position="top"
+                                           href="#modal-excluir-entidade"
+                                           th:attr="data-codigo=${titulo.codigo}, data-nome=${titulo.descricao}"
+                                           data-delay="50" data-tooltip="Apagar"
+                                           style="margin-left: 9px">
+                                            <i class="tiny material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="11" th:if="${#lists.isEmpty(titulos)}">Nenhum título encontrado!</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Estrutura -->
+    <div id="modal-excluir-entidade" class="modal">
+        <div class="modal-content">
+            <h4>Exclusão de título</h4>
+            <span>Tem certeza que deseja remover o título ? </span>
+        </div>
+        <div class="modal-footer">
+            <form th:attr="data-url-base=@{/titulos}" method="POST">
+
+                <input type="hidden" name="_method" value="DELETE"/>
+                <button type="submit"
+                        class="modal-action modal-close waves-effect waves-light btn red darken-1 js-botao-remover-entidade-clicado"
+                        style="margin: 6px">Sim</button>
+                <span></span>
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn teal darken-3">Não</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/entidade.dialogo-de-remocao.js}"></script>
+</th:block>
+</body>
+</html>

@@ -26,6 +26,9 @@ public class Titulo {
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
 
+    @NotBlank
+    private String descricao;
+
     @NotNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_emissao")
@@ -124,5 +127,13 @@ public class Titulo {
 
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

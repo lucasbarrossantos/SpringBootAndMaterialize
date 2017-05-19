@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by lucasbarros on 16/05/17.
@@ -50,6 +51,14 @@ public class TitulosController {
         titulosService.salvar(titulo);
         attributes.addFlashAttribute("mensagem", "Título salva com sucesso.");
         return new ModelAndView("redirect:/titulos/novo");
+    }
+
+    @RequestMapping
+    public ModelAndView pesquisar(Titulo titulo){
+        ModelAndView mv = new ModelAndView("titulo/PesquisarTitulo");
+        List<Titulo> titulosFiltrados = titulosService.filtrar(titulo);
+        mv.addObject("titulos", titulosFiltrados);
+        return mv;
     }
 
 }
