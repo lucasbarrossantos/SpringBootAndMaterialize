@@ -1,5 +1,6 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "entidade")
+@DynamicUpdate
 public class Entidade {
 
     @Id

@@ -23,7 +23,7 @@
                             <span class="card-title">Cadastro de cliente</span>
 
                             <div class="row">
-                                <form method="post" th:action="@{/entidades}" th:object="${entidade}" class="col s12">
+                                <form method="post" th:action="@{/entidades/novo}" th:object="${entidade}" class="col s12">
                                     <input type="hidden" th:field="*{codigo}"/>
 
                                     <div class="row">

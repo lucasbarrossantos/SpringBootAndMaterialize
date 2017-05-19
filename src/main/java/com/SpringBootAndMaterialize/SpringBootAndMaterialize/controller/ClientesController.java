@@ -1,5 +1,6 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller;
 
+import com.SpringBootAndMaterialize.SpringBootAndMaterialize.exception.NegocioException;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Entidades;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.EntidadesService;
@@ -36,7 +37,7 @@ public class ClientesController {
         return new ModelAndView(VIEWER);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/novo", method = RequestMethod.POST)
     public ModelAndView salvar(@Valid Entidade entidade, BindingResult result, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
@@ -61,6 +62,19 @@ public class ClientesController {
         ModelAndView mv = new ModelAndView(VIEWER);
         mv.addObject(entidade);
         return mv;
+    }
+
+    @RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+    public String excluir(@PathVariable("codigo") Long codigo, RedirectAttributes attributes){
+        try {
+            entidadesService.excluir(codigo);
+        }catch (NegocioException e){
+            attributes.addFlashAttribute("mensagemErro", e.getMessage());
+            return "redirect:/entidades";
+        }
+
+        attributes.addFlashAttribute("mensagem", "Entidade excluída com sucesso.");
+        return "redirect:/entidades";
     }
 
 }

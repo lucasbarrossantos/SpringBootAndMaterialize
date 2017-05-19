@@ -1,0 +1,48 @@
+var Entidade = Entidade || {};
+
+Entidade.DialogoDeRemocao = (function () {
+
+    function Remover() {
+        this.modal = $('#modal-excluir-entidade');
+        this.botaoRemover = $('.js-remover-entidade-btn');
+        this.alertError = $('#erro');
+    }
+
+    Remover.prototype.iniciar = function () {
+        this.botaoRemover.on('click', onModalShow.bind(this));
+        this.alertError.on('dblclick', onDoubleClick);
+    };
+    
+    function onModalShow(evento) {
+        evento.preventDefault();
+        var button = $(evento.currentTarget);
+        var codigo = button.data('codigo');
+        var nome = button.data('nome');
+        var form = this.modal.find('form');
+        var action = form.data('url-base');
+        if (!action.endsWith('/')) {
+            action += '/';
+        }
+
+        form.attr('action', action + codigo);
+
+        this.modal.find('.modal-content span').html(
+            'Tem certeza que deseja excluir <strong>'
+            + nome + '</strong> ?');
+    }
+
+    function onDoubleClick(evento) {
+        $(this).remove(); // Remove o alert
+    }
+
+
+    return Remover;
+
+}());
+
+$(function () {
+
+    var removerEntidade = new Entidade.DialogoDeRemocao();
+    removerEntidade.iniciar();
+
+});
