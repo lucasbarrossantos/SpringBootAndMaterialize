@@ -29,4 +29,8 @@ public class TitulosService {
         String descricao = titulo.getDescricao() == null ? "%" : titulo.getDescricao();
         return titulos.findByDescricaoContainingIgnoreCase(descricao);
     }
+
+    public void excluir(Long codigo) {
+        titulos.delete(codigo);
+    }
 }

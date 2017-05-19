@@ -1,7 +1,9 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.model;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "titulo")
+@DynamicUpdate
 public class Titulo {
 
     @Id
@@ -44,8 +47,10 @@ public class Titulo {
     private Date dataDoPagamento;
 
     @NotNull
+    @NumberFormat(pattern = "#,##0.00") // Formato Americano
     private BigDecimal valor;
 
+    @NumberFormat(pattern = "#,##0.00") // Formato Americano
     @Column(name = "valor_pago")
     private BigDecimal valorPago;
 

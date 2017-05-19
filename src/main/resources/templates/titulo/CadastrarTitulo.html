@@ -5,7 +5,7 @@
       layout:decorator="/template/LayoutPadrao">
 
 <head>
-    <title>Cadastro de título</title>
+    <title th:text="${codigo == null ? 'Cadastro de título' : 'Edição de título'}">Cadastro de título</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -14,16 +14,17 @@
     <div class="container">
         <div class="section">
             <div layout:include="/fragments/MensagemGeral"></div>
-            <h4>Cadastro de Título</h4>
+            <h4 th:text="${codigo == null ? 'Cadastro de título' : 'Edição de título'}">Cadastro de Título</h4>
 
             <div class="row">
                 <div class="col s12 m12">
                     <div class="card hoverable">
                         <div class="card-content black-text">
-                            <span class="card-title">Cadastro de título</span>
+                            <span class="card-title" th:text="${codigo == null ? 'Cadastro de título' : 'Edição de título'}">Cadastro de título</span>
 
                             <div class="row">
                                 <form method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
+                                    <input type="hidden" th:field="*{codigo}"/>
 
                                     <div class="row">
                                         <div class="input-field s12 col m6">
@@ -84,7 +85,7 @@
 
                                     <div class="row">
                                         <div class="input-field s12 col m6">
-                                            <input id="valor" type="text" class="validate"
+                                            <input id="valor" type="text" class="validate js-valor"
                                                    th:classappend="${#fields.hasErrors('valor')} ? invalid"
                                                    th:field="*{valor}"/>
 
@@ -92,7 +93,7 @@
                                         </div>
 
                                         <div class="input-field s12 col m6">
-                                            <input id="valorPago" type="text" class="validate"
+                                            <input id="valorPago" type="text" class="validate js-valor"
                                                    th:classappend="${#fields.hasErrors('valorPago')} ? invalid"
                                                    th:field="*{valorPago}"/>
 
@@ -121,7 +122,7 @@
 
                                     <br/>
                                     <br/>
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                                    <button class="btn deep-purple darken-4 waves-effect waves-light" type="submit" name="action">Salvar
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </form>
@@ -134,4 +135,9 @@
     </div>
 
 </section>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/entidade.dialogo-de-remocao.js}"></script>
+    <script th:src="@{/vendor/js/jquery.maskMoney.js}"></script>
+</th:block>
 </html>

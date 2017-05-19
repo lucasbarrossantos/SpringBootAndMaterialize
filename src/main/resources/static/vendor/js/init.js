@@ -15,8 +15,16 @@ $(document).ready(function () {
     $('select').material_select();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('input#input_text, textarea#textarea').characterCounter();
+});
+
+$(function () {
+    $('.js-valor').maskMoney({
+        decimal : ',',
+        thousands : '.',
+        allowZero : true
+    });
 });
 
 $('.js-componente-data').pickadate({
@@ -37,6 +45,6 @@ $('.js-componente-data').pickadate({
     formatsubmit: 'dd/mm/yyyy'
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.tooltipped').tooltip({delay: 50});
 });

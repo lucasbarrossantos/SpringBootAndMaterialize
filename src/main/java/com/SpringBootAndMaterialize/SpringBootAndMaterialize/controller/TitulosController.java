@@ -8,6 +8,7 @@ import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.TitulosServ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,11 +55,28 @@ public class TitulosController {
     }
 
     @RequestMapping
-    public ModelAndView pesquisar(Titulo titulo){
+    public ModelAndView pesquisar(Titulo titulo) {
         ModelAndView mv = new ModelAndView("titulo/PesquisarTitulo");
         List<Titulo> titulosFiltrados = titulosService.filtrar(titulo);
         mv.addObject("titulos", titulosFiltrados);
         return mv;
+    }
+
+    @RequestMapping("{codigo}")
+    public ModelAndView adicao(@PathVariable("codigo") Titulo titulo) {
+        ModelAndView mv = new ModelAndView(VIEWER);
+        mv.addObject("entidades", entidades.findAll());
+        mv.addObject("todosTiposTitulo", Tipo.values());
+        mv.addObject("todasAsSituacoes", Situacao.values());
+        mv.addObject(titulo);
+        return mv;
+    }
+
+    @RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+    public String excluir(@PathVariable("codigo") Long codigo, RedirectAttributes attributes) {
+        titulosService.excluir(codigo);
+        attributes.addFlashAttribute("mensagem", "Título excluída com sucesso.");
+        return "redirect:/titulos";
     }
 
 }

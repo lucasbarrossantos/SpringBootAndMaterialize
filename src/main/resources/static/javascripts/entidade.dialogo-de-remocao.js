@@ -6,11 +6,13 @@ Entidade.DialogoDeRemocao = (function () {
         this.modal = $('#modal-excluir-entidade');
         this.botaoRemover = $('.js-remover-entidade-btn');
         this.alertError = $('#erro');
+        this.alertInfo = $('#info');
     }
 
     Remover.prototype.iniciar = function () {
         this.botaoRemover.on('click', onModalShow.bind(this));
-        this.alertError.on('dblclick', onDoubleClick);
+        this.alertError.on('dblclick', onDoubleClickErro);
+        this.alertInfo.on('dblclick', onDoubleClickInfo);
     };
     
     function onModalShow(evento) {
@@ -31,7 +33,11 @@ Entidade.DialogoDeRemocao = (function () {
             + nome + '</strong> ?');
     }
 
-    function onDoubleClick(evento) {
+    function onDoubleClickErro(evento) {
+        $(this).remove(); // Remove o alert
+    }
+
+    function onDoubleClickInfo() {
         $(this).remove(); // Remove o alert
     }
 
