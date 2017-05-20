@@ -26,9 +26,9 @@
 <th:block layout:include="/fragments/footer"></th:block>
 
 <!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script th:src="@{/vendor/js/jquery-2.1.1.min.js}"></script>
 <script th:src="@{/vendor/js/materialize.js}"></script>
+<script th:src="@{/vendor/js/jquery.maskMoney.js}"></script>
 <script th:src="@{/vendor/js/init.js}"></script>
 <th:block layout:fragment="javascript-extra"/>
 </body>

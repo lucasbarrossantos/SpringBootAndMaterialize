@@ -53,7 +53,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="titulo : ${titulos}">
+                                <tr th:each="titulo : ${pagina.conteudo}">
                                     <td th:text="${titulo.codigo}">1</td>
                                     <td th:text="${titulo.descricao}">Desc</td>
                                     <td th:text="${titulo.entidade.nome}">Lucas</td>
@@ -80,7 +80,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="11" th:if="${#lists.isEmpty(titulos)}">Nenhum título encontrado!</td>
+                                    <td colspan="11" th:if="${#lists.isEmpty(pagina.vazia)}">Nenhum título encontrado!</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -88,6 +88,27 @@
                         </div>
                     </div>
                 </div>
+                <ul class="center pagination" th:if="${not pagina.vazia}" th:with="paginaAtual=${pagina.atual}">
+                    <li th:class="${pagina.primeira} ? disabled">
+                        <a th:href="${pagina.urlParaPagina(paginaAtual - 1)}"
+                           th:remove="${pagina.primeira} ? tag">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+
+                    <th:block th:each="p : ${#numbers.sequence(1, pagina.total)}" th:with="numeroPagina=${p - 1}">
+                        <li th:class="${paginaAtual == numeroPagina} ? 'active deep-purple darken-4' : waves-effect">
+                            <a th:href="${pagina.urlParaPagina(numeroPagina)}" th:text="${p}">1</a>
+                        </li>
+                    </th:block>
+
+                    <li th:class="${pagina.ultima} ? disabled">
+                        <a th:href="${pagina.urlParaPagina(paginaAtual + 1)}"
+                           th:remove="${pagina.ultima} ? tag">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

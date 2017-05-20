@@ -17,7 +17,7 @@ public class SpringBootAndMaterializeApplication {
 	public static class MvcConfig extends WebMvcConfigurerAdapter {
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
-			registry.addRedirectViewController("/", "/entidades/novo");
+			registry.addRedirectViewController("/", "/");
 		}
 	}
 }

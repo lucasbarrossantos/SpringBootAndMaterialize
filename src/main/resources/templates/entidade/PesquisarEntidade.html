@@ -51,7 +51,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="entidade : ${entidades}">
+                                        <tr th:each="entidade : ${pagina.conteudo}">
                                             <td th:text="${entidade.codigo}">1</td>
                                             <td th:text="${entidade.nome}">Lucas</td>
                                             <td th:text="${entidade.cpfOuCnpj}">Lucas</td>
@@ -76,13 +76,34 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="9" th:if="${#lists.isEmpty(entidades)}">Nenhuma entidade encontrada!</td>
+                                            <td colspan="9" th:if="${#lists.isEmpty(pagina.vazia)}">Nenhuma entidade encontrada!</td>
                                         </tr>
                                     </tbody>
                                 </table>
                         </div>
                     </div>
                 </div>
+                <ul class="center pagination" th:if="${not pagina.vazia}" th:with="paginaAtual=${pagina.atual}">
+                    <li th:class="${pagina.primeira} ? disabled">
+                        <a th:href="${pagina.urlParaPagina(paginaAtual - 1)}"
+                           th:remove="${pagina.primeira} ? tag">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+
+                    <th:block th:each="p : ${#numbers.sequence(1, pagina.total)}" th:with="numeroPagina=${p - 1}">
+                        <li th:class="${paginaAtual == numeroPagina} ? 'active deep-purple darken-4' : waves-effect">
+                            <a th:href="${pagina.urlParaPagina(numeroPagina)}" th:text="${p}">1</a>
+                        </li>
+                    </th:block>
+
+                    <li th:class="${pagina.ultima} ? disabled">
+                        <a th:href="${pagina.urlParaPagina(paginaAtual + 1)}"
+                           th:remove="${pagina.ultima} ? tag">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

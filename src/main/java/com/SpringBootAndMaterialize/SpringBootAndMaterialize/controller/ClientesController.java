@@ -1,10 +1,12 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller;
 
+import com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller.page.PageWrapper;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.exception.NegocioException;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
-import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Entidades;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.service.EntidadesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -47,10 +50,12 @@ public class ClientesController {
     }
 
     @RequestMapping
-    public ModelAndView pesquisar(Entidade entidade){
+    public ModelAndView pesquisar(Entidade entidade, @PageableDefault(size = 5) Pageable pageable,
+                                  HttpServletRequest httpServletRequest){
+
         ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
-        List<Entidade> todasAsEntidades = entidadesService.filtrar(entidade);
-        mv.addObject("entidades", todasAsEntidades);
+        PageWrapper<Entidade> paginaWrapper = new PageWrapper<>(entidadesService.filtrar(entidade, pageable), httpServletRequest);
+        mv.addObject("pagina", paginaWrapper);
         return mv;
     }
 

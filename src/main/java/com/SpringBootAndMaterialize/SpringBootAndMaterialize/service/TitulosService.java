@@ -3,9 +3,9 @@ package com.SpringBootAndMaterialize.SpringBootAndMaterialize.service;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Titulo;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Titulos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by lucasbarros on 17/05/17.
@@ -25,9 +25,9 @@ public class TitulosService {
         titulos.save(titulo);
     }
 
-    public List<Titulo> filtrar(Titulo titulo) {
+    public Page<Titulo> filtrar(Titulo titulo, Pageable pageable) {
         String descricao = titulo.getDescricao() == null ? "%" : titulo.getDescricao();
-        return titulos.findByDescricaoContainingIgnoreCase(descricao);
+        return titulos.findByDescricaoContainingIgnoreCase(descricao, pageable);
     }
 
     public void excluir(Long codigo) {

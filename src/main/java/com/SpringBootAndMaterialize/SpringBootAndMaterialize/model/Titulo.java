@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -47,6 +48,7 @@ public class Titulo {
     private Date dataDoPagamento;
 
     @NotNull
+    @DecimalMin(value = "0.00")
     @NumberFormat(pattern = "#,##0.00") // Formato Americano
     private BigDecimal valor;
 

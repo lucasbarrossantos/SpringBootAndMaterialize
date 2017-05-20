@@ -1,10 +1,10 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository;
 
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Created by lucasbarros on 16/05/17.
@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface Entidades extends JpaRepository<Entidade, Long>{
 
-    List<Entidade> findByNomeContainingIgnoreCase(String nome);
+    Page<Entidade> findByNomeContainingIgnoreCase(String nome, Pageable pageable);
 
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/template/LayoutPadrao">
+
+<head>
+    <title>Spring Boot</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+    <div class="container">
+        <div class="section">
+
+            <div class="row">
+                <div class="col s12 m6">
+
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">search</i>Sobre o curso</div>
+                            <div class="collapsible-body">
+                                <span>
+                                    Neste curso você irá ter uma visão sobre o Spring Boot. Iremos criar um sistema do zero e
+                                    implementá-lo.
+                                    Iremos aprender:<p></p>
+                                    Spring Boot<p></p>
+                                    Spring Data<p></p>
+                                    Consultas dinâmicas<p></p>
+                                    Um pouco de JavaScript<p></p>
+                                    Um pouco de Materialize
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">contacts</i>Contatos</div>
+                            <div class="collapsible-body">
+                                <span>
+                                    lucas-barros28@hotmail.com<p></p>
+                                    lucas.barros@facape.br<p></p>
+                                    +55 879 9642-1975
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">account_circle</i>GitHub</div>
+                            <div class="collapsible-body">
+                                <a class="orange-text text-lighten-3" target="_blank"
+                                   href="https://github.com/lucasbarrossantos/SpringBootAndMaterialize">
+                                    lucasbarrossantos
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="divider"></div>
+    </div>
+</section>
+</body>
+</html>

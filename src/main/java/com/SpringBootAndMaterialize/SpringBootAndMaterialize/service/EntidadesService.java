@@ -3,13 +3,11 @@ package com.SpringBootAndMaterialize.SpringBootAndMaterialize.service;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.exception.NegocioException;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.model.Entidade;
 import com.SpringBootAndMaterialize.SpringBootAndMaterialize.repository.Entidades;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import javax.validation.ConstraintViolation;
-import java.util.List;
 
 /**
  * Created by lucasbarros on 16/05/17.
@@ -25,9 +23,9 @@ public class EntidadesService {
         entidades.save(entidade);
     }
 
-    public List<Entidade> filtrar(Entidade entidade) {
+    public Page<Entidade> filtrar(Entidade entidade, Pageable pageable) {
         String nome = entidade.getNome() == null ? "%" : entidade.getNome();
-        return entidades.findByNomeContainingIgnoreCase(nome);
+        return entidades.findByNomeContainingIgnoreCase(nome, pageable);
     }
 
     public void excluir(Long codigo) {

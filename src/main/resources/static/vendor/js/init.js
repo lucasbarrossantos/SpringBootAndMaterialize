@@ -19,6 +19,10 @@ $(document).ready(function () {
     $('input#input_text, textarea#textarea').characterCounter();
 });
 
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});
+
 $(function () {
     $('.js-valor').maskMoney({
         decimal : ',',
