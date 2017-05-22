@@ -4,14 +4,14 @@
 Sistema de controle de contas à pagar e receber
 
 # Ementa
-> Spring Boot
-> Materialize
-> Spring Data
-> Consultas dinâmicas
-> JavaScript
-> CSS
-> Componentes do Materialize
-> Verbos http
+* Spring Boot
+* Materialize
+* Spring Data
+* Consultas dinâmicas
+* JavaScript
+* CSS
+* Componentes do Materialize
+* Verbos http
 
 # Autor
 Lucas Barros Santos
