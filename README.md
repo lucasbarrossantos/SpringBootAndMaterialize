@@ -13,6 +13,12 @@ Sistema de controle de contas à pagar e receber
 * Componentes do Materialize
 * Verbos http
 
+# Requisitos
+* Orientação a Objeto
+* CSS
+* HTML
+* JavaScript
+
 # Autor
 Lucas Barros Santos
 > Graduando em: Ciência da Computação - [FACAPE](http://www.facape.br/novo/index.aspx)
