@@ -15,7 +15,6 @@ Sistema de controle de contas à pagar e receber
 
 # Requisitos
 * Orientação a Objeto
-* CSS
 * HTML
 * JavaScript
 
