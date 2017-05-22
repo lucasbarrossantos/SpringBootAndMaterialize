@@ -15,4 +15,4 @@ Sistema de controle de contas à pagar e receber
 
 # Autor
 Lucas Barros Santos
-> Graduando em: Ciência da Computação - FACAPE
+> Graduando em: Ciência da Computação - [FACAPE](http://www.facape.br/novo/index.aspx)
