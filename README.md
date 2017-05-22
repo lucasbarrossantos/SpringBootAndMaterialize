@@ -4,8 +4,8 @@
 Sistema de controle de contas à pagar e receber
 
 # Ementa
-* Spring Boot
-* Materialize
+* [Spring Boot](http://spring.io/)
+* [Materialize](http://materializecss.com/) 
 * Spring Data
 * Consultas dinâmicas
 * JavaScript
