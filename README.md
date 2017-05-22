@@ -4,5 +4,5 @@
 Sistema de controle de contas à pagar e receber
 
 # Autor
-Lucas Barros Santos
-Graduando em: Ciência da Computação - FACAPE
+* Lucas Barros Santos
+* Graduando em: Ciência da Computação - FACAPE
