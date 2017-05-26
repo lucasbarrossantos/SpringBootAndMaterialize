@@ -1,6 +1,6 @@
 ![alt tag](https://raw.githubusercontent.com/lucasbarrossantos/SpringBootAndMaterialize/master/index.png)
 
-# Curso - Começando com Spring Boot
+# Curso - Spring Boot e Materialize
 Sistema de controle de contas à pagar e receber
 
 # Ementa do curso:
