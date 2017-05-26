@@ -4,14 +4,21 @@
 Sistema de controle de contas à pagar e receber
 
 # Ementa do curso:
-* [Spring Boot](http://spring.io/)
-* [Materialize](http://materializecss.com/) 
-* [Spring Data JPA](http://docs.spring.io/spring-data/jpa/docs/1.11.3.RELEASE/reference/html/)
-* Consultas dinâmicas
-* JavaScript
-* CSS
-* Componentes do Materialize
-* Verbos http
+- Spring Boot
+- Spring IoC
+- Materialize
+- CSS
+- JQuery
+- Consultas dinâmicas com Spring Data 
+- Relacionamentos entre tabelas
+- Mapeamento das entidades
+- Thymeleaf
+- Design Responsivo
+- Maven
+- MySQL
+- Tomcat
+- JQuery
+- Bean Validation
 
 # Requisitos
 * Orientação a Objeto
