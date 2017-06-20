@@ -1,9 +1,5 @@
 package com.SpringBootAndMaterialize.SpringBootAndMaterialize.controller.page;
 
-/**
- * Created by lucasbarros on 18/04/17.
- */
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

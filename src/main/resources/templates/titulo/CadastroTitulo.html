@@ -27,16 +27,13 @@
                                     <input type="hidden" th:field="*{codigo}"/>
 
                                     <div class="row">
-                                        <div class="input-field s12 col m6">
-                                            <select id="entidade" class="validate" th:field="*{entidade}"
-                                                    th:classappend="${#fields.hasErrors('entidade')} ? invalid">
-                                                <option value="" selected="selected">Selecione a entidade</option>
-                                                <option th:each="entidade : ${entidades}"
-                                                        th:value="${entidade.codigo}"
-                                                        th:text="${entidade.nome}">Lucas Barros</option>
-                                            </select>
-                                            <label for="entidade"
-                                                   data-error="Entidade deve ser informada">Entidade</label>
+                                        <div class="input-field col s12 m6">
+                                            <i class="material-icons prefix">textsms</i>
+                                            <input type="text" id="entidade" class="autocomplete"
+                                                   placeholder="Pesquise pelo nome da entidade" autocomplete="off"/>
+                                            <label for="entidade">Entidade</label>
+
+                                            <input type="hidden" id="entidade-atualizada" name="entidade" value=""/>
                                         </div>
 
                                         <div class="input-field s12 col m6">
@@ -48,6 +45,7 @@
                                                    data-error="Emissão deve ser informada">Data de emissão</label>
                                         </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class="input-field col m12 s12 l12">
@@ -137,6 +135,7 @@
 </section>
 
 <th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/titulo.autocomplete-clientes.js}"></script>
     <script th:src="@{/javascripts/entidade.dialogo-de-remocao.js}"></script>
 </th:block>
 </html>

@@ -17,13 +17,13 @@
 
 <body>
 
-<header layout:include="/fragments/Cabecalho"></header>
+<div th:replace="/fragments/Cabecalho :: cabecalho"></div>
 
 <!-- Conteudo para ser injetado -->
 <section layout:fragment="conteudo">
 </section>
 
-<th:block layout:include="/fragments/footer"></th:block>
+<div th:replace="/fragments/footer :: footer"></div>
 
 <!--  Scripts-->
 <script th:src="@{/vendor/js/jquery-2.1.1.min.js}"></script>

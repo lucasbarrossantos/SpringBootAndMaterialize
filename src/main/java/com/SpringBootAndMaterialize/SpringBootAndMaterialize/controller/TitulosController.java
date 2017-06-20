@@ -20,15 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-/**
- * Created by lucasbarros on 16/05/17.
- */
 
 @Controller
 @RequestMapping("/titulos")
 public class TitulosController {
 
-    private static final String VIEWER = "titulo/CadastrarTitulo";
+    private static final String VIEWER = "titulo/CadastroTitulo";
 
     @Autowired
     private Entidades entidades;

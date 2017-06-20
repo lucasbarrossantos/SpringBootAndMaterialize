@@ -63,7 +63,7 @@
                                     <td th:text="|R$ ${{titulo.valor}}|">R$ 1,00</td>
                                     <td th:text="|R$ ${{titulo.valorPago == null ? 0 : titulo.valorPago}}|">R$ 1,00</td>
                                     <td th:text="${titulo.tipo.descricao}">ENTRADA</td>
-                                    <td th:text="${titulo.situacao.descricao}">COMPENSADO</td>
+                                    <td th:text="${titulo.situacao.descricao}"></td>
                                     <td>
                                         <a class="tooltipped" data-position="top" data-delay="50"
                                            data-tooltip="Editar"

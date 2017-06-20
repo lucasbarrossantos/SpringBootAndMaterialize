@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<nav class="deep-purple darken-4" role="navigation">
+<body>
+<nav class="deep-purple darken-4" role="navigation" th:fragment="cabecalho">
     <div class="nav-wrapper container"><a id="logo-container" th:href="@{/}" class="brand-logo">Spring Boot</a>
 
         <ul class="right hide-on-med-and-down">
@@ -33,5 +34,5 @@
         <li><a th:href="@{/titulos/novo}">Títulos</a></li>
     </ul>
 </ul>
-
+</body>
 </html>

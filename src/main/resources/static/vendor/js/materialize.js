@@ -1926,7 +1926,7 @@ jQuery.Velocity ? console.log("Velocity is already loaded. You may be needlessly
     Hammer.Manager.prototype.emit = (function (originalEmit) {
         return function (type, data) {
             originalEmit.call(this, type, data);
-            $(this.element).trigger({
+            $(this.nome).trigger({
                 type: type,
                 gesture: data
             });
