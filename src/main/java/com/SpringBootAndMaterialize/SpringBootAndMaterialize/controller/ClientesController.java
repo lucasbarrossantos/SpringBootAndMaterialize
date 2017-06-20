@@ -87,5 +87,4 @@ public class ClientesController {
     public @ResponseBody List<EntidadeDTO> pesquisar(String nome){
         return entidades.clientesFiltrados(nome.toLowerCase());
     }
-
 }
