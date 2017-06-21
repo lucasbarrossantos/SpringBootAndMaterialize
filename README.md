@@ -17,7 +17,6 @@ Sistema de controle de contas à pagar e receber
 - Maven
 - MySQL
 - Tomcat
-- JQuery
 - Bean Validation
 
 # Requisitos
